@@ -16,7 +16,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
         <datasource-mapping>
-          <factory-entry name="AdvJPA" value="0ae6ca6c-1786-4946-b3a9-200c9030be7a" />
+          <factory-entry name="AdvJPA" value="41fc020d-0503-44a1-bd8f-6ca6421bcd04" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/resources/META-INF/persistence.xml" />
       </configuration>

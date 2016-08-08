@@ -34,11 +34,11 @@ public class Client {
   // private Byte photo;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "addresses_ad_id", nullable = false)
+    @JoinColumn(name = "fk_ad_id", nullable = false)
     private Address address;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cards_id_card", nullable = false)
+    @JoinColumn(name = "fk_id_card", nullable = false)
     private IDCard idCard;
 
    /* @OneToOne(fetch = FetchType.LAZY)

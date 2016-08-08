@@ -36,7 +36,7 @@ public class IDCard {
     public IDCard() {
     }
 
-    public IDCard(String name, String lastName, String surName, String dateOfBirth, String seriesIDCard, String numberIDCard, String taxNumber) {
+    public IDCard(String dateOfBirth, String name, String numberIDCard, String seriesIDCard,  String surName, String taxNumber, String lastName) {
         this.name = name;
         this.lastName = lastName;
         this.surName = surName;

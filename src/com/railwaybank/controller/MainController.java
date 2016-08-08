@@ -67,7 +67,7 @@ public class MainController {
 							   HttpServletResponse response)
 	{
 		try {
-			IDCard idCard = new IDCard(name,lastName,surName,dateOfBirth,seriesIDCard,numberIDCard,taxNumber);
+			IDCard idCard = new IDCard(dateOfBirth,name,numberIDCard,seriesIDCard,surName,taxNumber,lastName);
 			myDAO.addIDCard(idCard);
 			return "registration_address";
 		} catch (Exception ex) {
