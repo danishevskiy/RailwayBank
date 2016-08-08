@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - railwaybank@localhost" uuid="243e659a-1486-409d-b8b0-f19eb9ffa4dd">
+    <database-info product="MySQL" version="5.7.13-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.39 ( Revision: 3289a357af6d09ecc1a10fd3c26e95183e5790ad )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="railwaybank"/>
+    <table name="account_to_card" schema="" catalog="railwaybank" type="TABLE">
+      <column name="idaccount_to_card" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_accaunt" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_cards" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idaccount_to_card,id_accaunt,id_cards"/>
+      <index name="ac_id_idx" unique="false" columns="id_accaunt"/>
+      <index name="ca_id_idx" unique="false" columns="id_cards"/>
+    </table>
+    <table name="accounts" schema="" catalog="railwaybank" type="TABLE">
+      <column name="ac_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="vip_card" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="credit_card" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="debit_card" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ac_id"/>
+      <exported-key name="FK_rum37egh1wjpbiayw0kx4fhv0" table="clients" schema="" catalog="railwaybank" columns="accounts_ac_id"/>
+    </table>
+    <table name="addresses" schema="" catalog="railwaybank" type="TABLE">
+      <column name="ad_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="city" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="house_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="landline_phone" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="street_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="zip_code" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ad_id"/>
+      <exported-key name="FK_t0t2cr2iq2uwipl6sutbcw7mv" table="clients" schema="" catalog="railwaybank" columns="addresses_ad_id"/>
+    </table>
+    <table name="cards" schema="" catalog="railwaybank" type="TABLE">
+      <column name="ca_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="number_card" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="balans" sqlType="DECIMAL" precision="5" scale="0" nullable="false" jdbcType="3"/>
+      <column name="cvv1" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cvv2" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pin_code" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="valid_from" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="expires_end" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ca_id"/>
+    </table>
+    <table name="clients" schema="" catalog="railwaybank" type="TABLE">
+      <column name="c_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="mobile_phone" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <column name="create_date_time" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="update_date_time" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="photo" sqlType="BLOB" precision="65535" scale="0" nullable="true" jdbcType="-4"/>
+      <column name="addresses_ad_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_cards_id_card" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="accounts_ac_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="c_id,accounts_ac_id,id_cards_id_card,addresses_ad_id"/>
+      <foreign-key name="FK_1xkymxjbx5h0ldxhhskgqbla" columns="id_cards_id_card" ref-table="id_cards" ref-schema="" ref-catalog="railwaybank" ref-columns="id_card" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_rum37egh1wjpbiayw0kx4fhv0" columns="accounts_ac_id" ref-table="accounts" ref-schema="" ref-catalog="railwaybank" ref-columns="ac_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_t0t2cr2iq2uwipl6sutbcw7mv" columns="addresses_ad_id" ref-table="addresses" ref-schema="" ref-catalog="railwaybank" ref-columns="ad_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="email_UNIQUE" unique="true" columns="email"/>
+      <index name="phone_UNIQUE" unique="true" columns="mobile_phone"/>
+      <index name="fk_clients_accounts1_idx" unique="false" columns="accounts_ac_id"/>
+      <index name="fk_clients_addresses_idx" unique="false" columns="addresses_ad_id"/>
+      <index name="fk_clients_id_cards1_idx" unique="false" columns="id_cards_id_card"/>
+    </table>
+    <table name="excheng_rate" schema="" catalog="railwaybank" type="TABLE">
+      <column name="idexcheng_rate" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="EUR_UAH_buy" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="EUR_UAH_sale" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="USD_UAH_buy" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="USD_UAH_sale" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <primary-key name="PRIMARY" columns="idexcheng_rate"/>
+    </table>
+    <table name="hibernate_sequence" schema="" catalog="railwaybank" type="TABLE">
+      <column name="next_val" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+    </table>
+    <table name="id_cards" schema="" catalog="railwaybank" type="TABLE">
+      <column name="id_card" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="dateOfBirth" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="laastname" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="numberIDCard" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="seriesIDCard" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="surname" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="taxNumber" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lastname" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_card"/>
+      <exported-key name="FK_1xkymxjbx5h0ldxhhskgqbla" table="clients" schema="" catalog="railwaybank" columns="id_cards_id_card"/>
+    </table>
+    <table name="photo" schema="" catalog="railwaybank" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="table1" schema="" catalog="railwaybank" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="user" schema="" catalog="railwaybank" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="phone" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="surname" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="createdate" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="updatetime" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="activation_key" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="role" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_card" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="age" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="address" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="email_UNIQUE" unique="true" columns="email"/>
+      <index name="id_card_UNIQUE" unique="true" columns="id_card"/>
+      <index name="phone_UNIQUE" unique="true" columns="phone"/>
+    </table>
+  </data-source>
+</component>
